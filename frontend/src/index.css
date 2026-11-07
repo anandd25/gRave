@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-crypt: #0b0710;
+  --color-tomb: #150d1f;
+  --color-slab: #1f1430;
+  --color-ecto: #7CFF6B;
+  --color-blood: #ff2e4d;
+  --color-spirit: #b46bff;
+  --color-bone: #e8e1d3;
+  --font-display: "Creepster", "Impact", fantasy;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #1d0f2e 0%, var(--color-crypt) 60%);
+  color: var(--color-bone);
+  font-family: var(--font-mono);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 1; }
+  50% { opacity: 0.55; }
+  55% { opacity: 1; }
+  80% { opacity: 0.8; }
+}
+.flicker { animation: flicker 4s infinite; }
+
+@keyframes pulse-blood {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 46, 77, 0.6); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 46, 77, 0); }
+}
+.rec-pulse { animation: pulse-blood 1.2s infinite; }
+
+@keyframes drift {
+  from { transform: translateX(-10vw) translateY(0); }
+  50% { transform: translateX(50vw) translateY(-30px); }
+  to { transform: translateX(110vw) translateY(10px); }
+}
+.drift { animation: drift linear infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+.bob { animation: bob 3s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flicker, .rec-pulse, .drift, .bob { animation: none; }
+}
+
+.glow-ecto { text-shadow: 0 0 12px rgba(124, 255, 107, 0.6); }
