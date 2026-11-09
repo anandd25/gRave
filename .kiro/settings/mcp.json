@@ -1,0 +1,11 @@
+﻿{
+  "mcpServers": {
+    "grave-producer": {
+      "command": "backend/.venv/Scripts/python.exe",
+      "args": ["backend/mcp_server.py"],
+      "env": { "PYTHONUNBUFFERED": "1" },
+      "disabled": false,
+      "autoApprove": ["analyze_vocal", "plan_arrangement", "list_instruments"]
+    }
+  }
+}

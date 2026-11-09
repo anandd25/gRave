@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Pumpkin, Candy } from './Decor'
 
-// Random surprise: each outcome is sent to the producer chat as a normal command.
+// Random surprise: each outcome is sent to the AI producer as a normal chat request.
 const OUTCOMES = [
-  { kind: 'Treat', msg: 'A glockenspiel chimes in.', command: 'add glockenspiel everywhere' },
-  { kind: 'Treat', msg: 'Hi-hats get busier.', command: 'make the hi-hats busier' },
-  { kind: 'Trick', msg: 'The 808 turns filthy.', command: 'make the 808 grittier and longer' },
-  { kind: 'Trick', msg: 'The room fills with ghosts.', command: 'make it spookier' },
-  { kind: 'Treat', msg: 'A sweet synth lead appears.', command: 'add synth lead in the hook' },
+  { kind: 'Treat', msg: 'A music box starts playing by itself.', command: 'add a creepy music box melody where the vocal rests' },
+  { kind: 'Treat', msg: 'A ghost choir rises from the crypt.', command: 'add a ghost choir under the hook' },
+  { kind: 'Trick', msg: 'The 808 turns filthy.', command: 'swap the 808 for the distorted 808 and make it hit harder' },
+  { kind: 'Trick', msg: 'The church bell tolls.', command: 'add a tolling church bell in the intro and outro' },
+  { kind: 'Treat', msg: 'War drums in the distance.', command: 'add war toms building into every hook' },
+  { kind: 'Trick', msg: 'The lights go out.', command: 'strip it back to a horror drone and the 808 in the breaks' },
+  { kind: 'Trick', msg: 'Something new crawls out of the synth.', command: 'design a brand new cursed instrument nobody has heard before and give it the hook' },
+  { kind: 'Treat', msg: 'A haunted toy wakes up.', command: 'invent a broken wind-up toy sound and sprinkle it in the breaks' },
 ]
 
 export default function TrickOrTreat({ disabled, onCommand }) {

@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Update producer steering when MCP tools change",
+      "trigger": "PostFileSave",
+      "description": "Keeps the producer-agent steering file's tool list matching the MCP server.",
+      "matcher": "backend[\\\\/]mcp_server\\.py$",
+      "action": {
+        "type": "agent",
+        "prompt": "backend/mcp_server.py was just saved. Check that the Tools list and workflow in .kiro/steering/producer-agent.md still match the @mcp.tool() functions (names, arguments, behavior). If they differ, update the steering file to match and say what changed."
+      }
+    }
+  ]
+}

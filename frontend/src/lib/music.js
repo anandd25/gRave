@@ -39,6 +39,13 @@ export function parseKey(text) {
   return { pc: (pc + 12) % 12, mode }
 }
 
+// Scale degree (0 = root, negative = below, 7 = octave) to MIDI note.
+export function degreeToMidi(rootMidi, mode, degree) {
+  const scale = mode === 'major' ? SCALES.major : SCALES.minor
+  const d = Math.round(degree)
+  return rootMidi + scale[((d % 7) + 7) % 7] + 12 * Math.floor(d / 7)
+}
+
 // Root note pitch class folded into a comfortable range for each role.
 export const subMidi = (pc) => (pc <= 6 ? 36 + pc : 24 + pc)
 export const midRootMidi = (pc) => (pc <= 6 ? 60 + pc : 48 + pc)

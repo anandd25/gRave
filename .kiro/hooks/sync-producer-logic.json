@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Keep producer logic in sync",
+      "trigger": "PostFileSave",
+      "description": "The arrangement logic lives in both the frontend and the Python backend. Flags drift when one side changes.",
+      "matcher": "(frontend[\\\\/]src[\\\\/]lib[\\\\/](producer|chat)\\.js|backend[\\\\/]grave[\\\\/]arrange\\.py)$",
+      "action": {
+        "type": "agent",
+        "prompt": "The gRave arrangement logic exists twice: frontend/src/lib/producer.js (plus chat.js for chat edits) and backend/grave/arrange.py. A file from one of them was just saved. Compare the other side for drift in section detection, default instrument regions, layer defaults, and reasons. Report any mismatch briefly and ask before changing anything."
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Backend syntax check on save",
+      "trigger": "PostFileSave",
+      "description": "Compiles the Python backend whenever a backend .py file is saved, so syntax errors show up immediately.",
+      "matcher": "backend[\\\\/].*\\.py$",
+      "action": {
+        "type": "command",
+        "command": "backend/.venv/Scripts/python.exe -m compileall -q backend/grave backend/main.py backend/mcp_server.py"
+      }
+    }
+  ]
+}
